@@ -20,16 +20,16 @@
   "contributes": {
     "commands": [
       {
-        "command": "lazygit.openLazygit",
-        "title": "Open Lazygit"
+        "command": "btop.openBtop",
+        "title": "Open Btop"
       }
     ],
     "keybindings": [
       {
         "command": "lazygit.openLazygit",
-        "key": "cmd+g g",
-        "mac": "cmd+g g",
-        "linux": "ctrl+g g"
+        "key": "cmd+g b",
+        "mac": "cmd+g b",
+        "linux": "ctrl+g b"
       }
     ]
   },
