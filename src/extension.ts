@@ -2,16 +2,16 @@ import * as vscode from "vscode";
 
 export function activate(context: vscode.ExtensionContext) {
   let disposable = vscode.commands.registerCommand(
-    "lazygit.openLazygit",
-    openLazygit
+    "btop.openBtop",
+    openBtop
   );
 
   context.subscriptions.push(disposable);
 }
 
-async function openLazygit() {
-  if (!(await focusActiveLazygitInstance())) {
-    await newLazygitInstance();
+async function openBtop() {
+  if (!(await focusActiveBtopInstance())) {
+    await newBtopInstance();
   }
 }
 
@@ -19,9 +19,9 @@ async function openLazygit() {
  * Tries to find an instance and focus on the tab.
  * @returns If an instance was found and focused
  */
-async function focusActiveLazygitInstance(): Promise<boolean> {
+async function focusActiveBtopInstance(): Promise<boolean> {
   for (let openTerminal of vscode.window.terminals) {
-    if (openTerminal.name === "lazygit") {
+    if (openTerminal.name === "btop") {
       openTerminal.show();
       return true;
     }
@@ -29,14 +29,14 @@ async function focusActiveLazygitInstance(): Promise<boolean> {
   return false;
 }
 
-async function newLazygitInstance() {
+async function newBtopInstance() {
   // Always create a new terminal
   await vscode.commands.executeCommand(
     "workbench.action.terminal.newInActiveWorkspace"
   );
 
   let terminal = vscode.window.activeTerminal!;
-  terminal.sendText("lazygit && exit");
+  terminal.sendText("btop && exit");
   terminal.show();
 
   // Move the terminal to the editor area
